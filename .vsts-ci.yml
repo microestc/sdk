@@ -1,6 +1,10 @@
 trigger:
-- master
-- release/*
+  batch: true
+  branches:
+    include:
+    - master
+    - release/*
+    - internal/release/3.*
 
 variables:
   - name: teamName
@@ -13,11 +17,17 @@ variables:
     value: .NETCore
   - name: _DotNetValidationArtifactsCategory
     value: .NETCore
+  - name: _PublishToAzure
+    value: false
   - ${{ if ne(variables['System.TeamProject'], 'public') }}:
     - name: PB_PublishBlobFeedUrl
       value: https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json
     - name: _DotNetPublishToBlobFeed
       value: true
+    - name: _PublishToAzure
+      value: true
+  - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+    - group: DotNet-CLI-SDLValidation-Params
 
 stages:
 - stage: build
@@ -52,7 +62,6 @@ stages:
               _PublishType: blob
               _SignType: real
               _Test: ''
-
   - ${{ if eq(variables['System.TeamProject'], 'public') }}:
     - template: /eng/build.yml
       parameters:
@@ -171,11 +180,23 @@ stages:
   - template: /eng/common/templates/post-build/post-build.yml
     parameters:
       enableSymbolValidation: false
+      SDLValidationParameters:
+        enable: true
+        params: ' -SourceToolsList @("policheck","credscan")
+        -TsaInstanceURL $(_TsaInstanceURL)
+        -TsaProjectName $(_TsaProjectName)
+        -TsaNotificationEmail $(_TsaNotificationEmail)
+        -TsaCodebaseAdmin $(_TsaCodebaseAdmin)
+        -TsaBugAreaPath $(_TsaBugAreaPath)
+        -TsaIterationPath $(_TsaIterationPath)
+        -TsaRepositoryName "dotnet-sdk"
+        -TsaCodebaseName "dotnet-sdk"
+        -TsaPublish $True'
 
 - stage: helix_tests
   displayName: controlled environment performance tests
   dependsOn: build
-  condition: ne(variables['System.TeamProject'], 'public')
+  condition: and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest'))
   jobs:
   - template: /eng/build.yml
     parameters:

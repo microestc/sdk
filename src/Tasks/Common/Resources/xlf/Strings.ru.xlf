@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="CannotFindIjwhost">
         <source>NETSDK1114: Unable to find a .NET Core IJW host. The .NET Core IJW host is only available on .NET Core 3.1 or higher when targeting Windows.</source>
-        <target state="new">NETSDK1114: Unable to find a .NET Core IJW host. The .NET Core IJW host is only available on .NET Core 3.1 or higher when targeting Windows.</target>
+        <target state="translated">NETSDK1114: IJW-узел .NET Core не найден. При разработке для Windows он доступен только начиная с версии .NET Core 3.1.</target>
         <note>{StrBegin="NETSDK1114: "}</note>
       </trans-unit>
       <trans-unit id="CannotFindProjectInfo">
@@ -141,6 +141,11 @@
         <source>NETSDK1067: Self-contained applications are required to use the application host. Either set SelfContained to false or set UseAppHost to true.</source>
         <target state="translated">NETSDK1067: для использования узла приложений требуются автономные приложения. Задайте свойству SelfContained значение false или задайте свойству UseAppHost значение true.</target>
         <note>{StrBegin="NETSDK1067: "}</note>
+      </trans-unit>
+      <trans-unit id="CanOnlyHaveSingleFileWithNetCoreApp">
+        <source>NETSDK1125: Publishing to a single-file is only supported for netcoreapp target.</source>
+        <target state="translated">NETSDK1125: публикация в один файл поддерживается только для целевой платформы netcoreapp.</target>
+        <note>{StrBegin="NETSDK1125: "}</note>
       </trans-unit>
       <trans-unit id="ChoosingAssemblyVersion_Info">
         <source>Choosing '{0}' because AssemblyVersion '{1}' is greater than '{2}'.</source>
@@ -224,8 +229,13 @@
       </trans-unit>
       <trans-unit id="CppRequiresTFMVersion31">
         <source>NETSDK1120: C++/CLI projects targeting .NET Core require a target framework of at least 'netcoreapp3.1'.</source>
-        <target state="new">NETSDK1120: C++/CLI projects targeting .NET Core require a target framework of at least 'netcoreapp3.1'.</target>
+        <target state="translated">NETSDK1120: для проектов C++/CLI, предназначенных для .NET Core, необходимо указать целевую платформу не ниже "netcoreapp3.1".</target>
         <note>{StrBegin="NETSDK1120: "}</note>
+      </trans-unit>
+      <trans-unit id="Crossgen2RequiresSelfContained">
+        <source>NETSDK1126: Publishing ReadyToRun using Crossgen2 is only supported for self-contained applications.</source>
+        <target state="new">NETSDK1126: Publishing ReadyToRun using Crossgen2 is only supported for self-contained applications.</target>
+        <note>{StrBegin="NETSDK1126: "}</note>
       </trans-unit>
       <trans-unit id="DotnetToolDoesNotSupportTFMLowerThanNetcoreapp21">
         <source>NETSDK1055: DotnetTool does not support target framework lower than netcoreapp2.1.</source>
@@ -393,7 +403,7 @@ The following are names of parameters or literal values and should not be transl
       </trans-unit>
       <trans-unit id="NETFrameworkWithoutUsingNETSdkDefaults">
         <source>NETSDK1115: The current .NET SDK does not support .NET Framework without using .NET SDK Defaults. It is likely due to a mismatch between C++/CLI project CLRSupport property and TargetFramework.</source>
-        <target state="new">NETSDK1115: The current .NET SDK does not support .NET Framework without using .NET SDK Defaults. It is likely due to a mismatch between C++/CLI project CLRSupport property and TargetFramework.</target>
+        <target state="translated">NETSDK1115: текущий пакет SDK для .NET не поддерживает .NET Framework без использования значений SDK для .NET по умолчанию. Причиной, скорее всего, является несоответствие TargetFramework и свойства CLRSupport в проекте C++/CLI.</target>
         <note>{StrBegin="NETSDK1115: "}</note>
       </trans-unit>
       <trans-unit id="NoAppHostAvailable">
@@ -418,23 +428,28 @@ The following are names of parameters or literal values and should not be transl
       </trans-unit>
       <trans-unit id="NoSupportCppEnableComHosting">
         <source>NETSDK1119: C++/CLI projects targeting .NET Core cannot use EnableComHosting=true.</source>
-        <target state="new">NETSDK1119: C++/CLI projects targeting .NET Core cannot use EnableComHosting=true.</target>
+        <target state="translated">NETSDK1119: проекты C++/CLI для .NET Core не могут использовать EnableComHosting=true.</target>
         <note>{StrBegin="NETSDK1119: "}</note>
       </trans-unit>
       <trans-unit id="NoSupportCppNonDynamicLibraryDotnetCore">
         <source>NETSDK1116: C++/CLI projects targeting .NET Core must be dynamic libraries.</source>
-        <target state="new">NETSDK1116: C++/CLI projects targeting .NET Core must be dynamic libraries.</target>
+        <target state="translated">NETSDK1116: проекты C++/CLI для .NET Core должны представлять собой динамические библиотеки.</target>
         <note>{StrBegin="NETSDK1116: "}</note>
       </trans-unit>
       <trans-unit id="NoSupportCppPackDotnetCore">
         <source>NETSDK1118: C++/CLI projects targeting .NET Core cannot be packed.</source>
-        <target state="new">NETSDK1118: C++/CLI projects targeting .NET Core cannot be packed.</target>
+        <target state="translated">NETSDK1118: проекты C++/CLI для .NET Core не могут быть упакованы.</target>
         <note>{StrBegin="NETSDK1118: "}</note>
       </trans-unit>
       <trans-unit id="NoSupportCppPublishDotnetCore">
         <source>NETSDK1117: Does not support publish of C++/CLI project targeting dotnet core.</source>
-        <target state="new">NETSDK1117: Does not support publish of C++/CLI project targeting dotnet core.</target>
+        <target state="translated">NETSDK1117: публикация проекта C++/CLI для .NET Core не поддерживается.</target>
         <note>{StrBegin="NETSDK1117: "}</note>
+      </trans-unit>
+      <trans-unit id="NoSupportCppSelfContained">
+        <source>NETSDK1121: C++/CLI projects targeting .NET Core cannot use SelfContained=true.</source>
+        <target state="translated">NETSDK1121: проекты C++/CLI для .NET Core не могут использовать значение параметра SelfContained=true.</target>
+        <note>{StrBegin="NETSDK1121: "}</note>
       </trans-unit>
       <trans-unit id="PackAsToolCannotSupportSelfContained">
         <source>NETSDK1053: Pack as tool does not support self contained.</source>
@@ -467,9 +482,24 @@ The following are names of parameters or literal values and should not be transl
         <note>{StrBegin="NETSDK1059: "}</note>
       </trans-unit>
       <trans-unit id="ProjectToolOnlySupportTFMLowerThanNetcoreapp22">
-        <source>NETSDK1093: NETSDK1093: Project tools (DotnetCliTool) only support targeting .NET Core 2.2 and lower.</source>
-        <target state="translated">NETSDK1093: NETSDK1093: средства проекта (DotnetCliTool) поддерживают только ориентацию на .NET Core 2.2 и более низких версий.</target>
+        <source>NETSDK1093: Project tools (DotnetCliTool) only support targeting .NET Core 2.2 and lower.</source>
+        <target state="translated">NETSDK1093: средства проекта (DotnetCliTool) поддерживают только целевую платформу .NET Core 2.2 и более ранних версий.</target>
         <note>{StrBegin="NETSDK1093: "}</note>
+      </trans-unit>
+      <trans-unit id="PublishReadyToRunRequiresVersion30">
+        <source>NETSDK1122: ReadyToRun compilation will be skipped because it is only supported for .NET Core 3.0 or higher.</source>
+        <target state="translated">NETSDK1122: компиляция ReadyToRun будет пропущена, так как она поддерживается только для .NET Core 3.0 или более поздних версий.</target>
+        <note>{StrBegin="NETSDK1122: "}</note>
+      </trans-unit>
+      <trans-unit id="PublishSingleFileRequiresVersion30">
+        <source>NETSDK1123: Publishing an application to a single-file requires .NET Core 3.0 or higher.</source>
+        <target state="translated">NETSDK1123: для публикации приложения в один файл требуется .NET Core 3.0 или более поздняя версия.</target>
+        <note>{StrBegin="NETSDK1123: "}</note>
+      </trans-unit>
+      <trans-unit id="PublishTrimmedRequiresVersion30">
+        <source>NETSDK1124: Trimming assemblies requires .NET Core 3.0 or higher.</source>
+        <target state="translated">NETSDK1124: для усечения сборок требуется .NET Core 3.0 или более поздняя версия.</target>
+        <note>{StrBegin="NETSDK1124: "}</note>
       </trans-unit>
       <trans-unit id="ReadyToRunCompilationFailed">
         <source>NETSDK1096: Optimizing assemblies for performance failed. You can either exclude the failing assemblies from being optimized, or set the PublishReadyToRun property to false.</source>

@@ -109,12 +109,12 @@ Copyright (c) .NET Foundation. All rights reserved.
     <NETSdkError Condition="'$(SelfContained)' != 'true'" ResourceName="ILLinkNotSupportedError" />
 
     <PropertyGroup>
-      <_ExtraTrimmerArgs>-l none --skip-unresolved true $(_ExtraTrimmerArgs)</_ExtraTrimmerArgs>
+      <_ExtraTrimmerArgs>--skip-unresolved true $(_ExtraTrimmerArgs)</_ExtraTrimmerArgs>
       <_ExtraTrimmerArgs>-c copyused -u copyused $(_ExtraTrimmerArgs)</_ExtraTrimmerArgs>
     </PropertyGroup>
     <ItemGroup>
       <TrimmerRootAssembly Include="@(_ManagedAssembliesToLink)" Condition=" '%(_ManagedAssembliesToLink.IsTrimmable)' != 'true' " />
-      <_ManagedAssembliesToLink Update="@(_ManagedAssembliesToLink)" Condition=" '%(_ManagedAssembliesToLink.IsTrimmable)' != 'true' ">
+      <_ManagedAssembliesToLink Condition=" '%(_ManagedAssembliesToLink.IsTrimmable)' != 'true' ">
         <action>copy</action>
       </_ManagedAssembliesToLink>
     </ItemGroup>
